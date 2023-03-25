@@ -10,9 +10,6 @@ export const register = async (req, res) => {
         const { name, email, password } = req.body;
 
         const avatar = req.files.avatar.tempFilePath;
-        console.log(avatar);
-
-        
 
         let user = await User.findOne({ email });
 
@@ -29,8 +26,8 @@ export const register = async (req, res) => {
             folder: "todoApp",
         });
 
-        console.log((await mycloud).public_id);
-        console.log((await mycloud).secure_url);
+        console.log(`mycloud public id: ${(await mycloud).public_id}`);
+        console.log(`mycloud secure_url: ${(await mycloud).secure_url}`);
 
 
         fs.rmSync("./tmp",{ recursive: true });
